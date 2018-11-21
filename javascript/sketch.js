@@ -3,6 +3,7 @@ var player1turn;
 var gameover;
 var count;
 var winner;
+var button;
 function setup() {
     size = 600;
     player1turn = true;
@@ -11,6 +12,14 @@ function setup() {
 
     scale = size/3;
     createCanvas(size,size);
+
+    button = createButton('reset',5);
+    button.position(220, 650);
+    button.size(170,100);
+    button.style('font-size','300%');
+    button.mouseReleased(function()
+        {location.reload();
+    });
 
     arr = [1,2,3,4,5,6,7,8,9];
 }
@@ -52,9 +61,16 @@ function mouseReleased(){
     x = floor(mx/scale);
     y = floor(my/scale);
     ind = (y*3) + x;
+    if(arr[ind]<=0){return;}
     arr[ind] = (player1turn)?-1:0;
     player1turn = !player1turn;
     checkwon();
+}
+
+function keyPressed(){
+    if(key === 'R'){
+		location.reload();
+	}
 }
 
 function checkwon(){
@@ -67,15 +83,15 @@ function checkwon(){
             winner = [i,i+6];
 		}
 	}
-		
-		
+
+
 	for( i =0;i<9;i+=3){
 		if(arr[i] === (arr[i+1]) && arr[i] === (arr[i+2])){
             gameover = true;
             winner = [i,i+2];
 		}
 	}
-		
+
 	for( i = 0, b = 4; i < 3; i += 2, b -= 2){
 		if(arr[i] === (arr[i+b]) && arr[i] === (arr[i+b+b])){
             gameover = true;
