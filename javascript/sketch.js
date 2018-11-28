@@ -1,4 +1,4 @@
-var arr,scale,size;
+var arr,sc,size;
 var player1turn;
 var gameover;
 var count;
@@ -10,7 +10,7 @@ function setup() {
     gameover = false;
     count = 0;
 
-    scale = size/3;
+    sc = size/3;
     createCanvas(size,size);
 
     button = createButton('reset',5);
@@ -31,23 +31,23 @@ function draw() {
         strokeWeight(3);
         stroke(255);
         push();
-        translate(((i%3)*scale),(floor((i/3))*scale));
-        rect(0,0,scale,scale);
+        translate(((i%3)*sc),(floor((i/3))*sc));
+        rect(0,0,sc,sc);
         if(arr[i] == 0){
-            ellipse(scale/2, scale/2, scale/2, scale/2);
+            ellipse(sc/2, sc/2, sc/2, sc/2);
         }
         else if(arr[i] == -1){
-            line(scale/4, scale/4, 3 * (scale/4),3 * (scale/4));
-            line(3 * (scale/4), (scale/4), (scale/4), 3 * (scale/4));
+            line(sc/4, sc/4, 3 * (sc/4),3 * (sc/4));
+            line(3 * (sc/4), (sc/4), (sc/4), 3 * (sc/4));
         }
         pop();
     }
     if(gameover){
         //Draw the line
-        x1 = (winner[0]%3)*scale + scale/2;
-        y1 = (floor(winner[0]/3))*scale + scale/2;
-        x2 = (winner[1]%3)*scale + scale/2;
-        y2 = (floor(winner[1]/3))*scale + scale/2;
+        x1 = (winner[0]%3)*sc + sc/2;
+        y1 = (floor(winner[0]/3))*sc + sc/2;
+        x2 = (winner[1]%3)*sc + sc/2;
+        y2 = (floor(winner[1]/3))*sc + sc/2;
         strokeWeight(20);
         line(x1, y1, x2, y2);
     }
@@ -58,8 +58,8 @@ function mouseReleased(){
     mx = mouseX;
     my = mouseY;
     if(mx>size || my>size ){   return; }
-    x = floor(mx/scale);
-    y = floor(my/scale);
+    x = floor(mx/sc);
+    y = floor(my/sc);
     ind = (y*3) + x;
     if(arr[ind]<=0){return;}
     arr[ind] = (player1turn)?-1:0;
