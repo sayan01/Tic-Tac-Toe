@@ -1,2 +1,1 @@
-start   http://localhost:8080
-http-server
+http-server -o -c-1
