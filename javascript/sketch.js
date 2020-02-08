@@ -9,18 +9,21 @@ var winner;
 var button;
 var playerinfo;
 function setup() {
-    sz = 600;
-    sc = sz/3;
-    createCanvas(sz,sz);
-    reset();			// Set state of board = new game
-    button = createButton('reset',5);
-    button.position(220, 620);
-    button.size(170,100);
-    button.style('font-size','300%');
-    button.mouseReleased(reset);
-    playerinfo = createP();
-    playerinfo.position(650,20);
-    playerinfo.style('font-size','200%');
+	sz = 600;
+	sc = sz/3;
+	createCanvas(sz,sz);
+	reset();			// Set state of board = new game
+	button = createButton('reset',5);
+	button.position(220, 620);
+	button.size(170,100);
+	button.style('font-size','300%');
+	button.mouseReleased(reset);
+	playerinfo = createP();
+	playerinfo.position(650,20);
+	playerinfo.style('font-size','200%');
+	src=createA('https://github.com/sayan01/Tic-Tac-Toe' , 'Github Repo');
+	src.position(650,150);
+
 }
 function reset(){
     arr = [1,2,3,4,5,6,7,8,9];
