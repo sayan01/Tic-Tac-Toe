@@ -60,7 +60,11 @@ public class TTT {
 		return choice;
 	}
 	private static void disp(String[] el){
-		for(int i = 0; i < flush;i++)	System.out.println(); // Flush screen
+		if(flush==100){ // Flush screen  
+			System.out.print("\033[H\033[2J");  
+			System.out.flush();
+		}
+		System.out.println(); 
 		for(int i =0;i<el.length;i++){
 			System.out.print(el[i]);
 			if(i == el.length -1) break;
